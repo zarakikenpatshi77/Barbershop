@@ -53,6 +53,9 @@ export const AuthProvider = ({ children }) => {
       const { data, error } = await supabase.auth.signUp({
         email,
         password,
+        options: {
+          emailRedirectTo: 'https://mohamedbailla.netlify.app/auth/callback'
+        }
       })
       if (error) throw error
       return { data, error: null }
